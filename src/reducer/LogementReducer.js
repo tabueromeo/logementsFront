@@ -4,6 +4,7 @@ const LogementReducer = (state=initialState, action) => {
   let nextState
   switch (action.type) {
     case "FAVORI":
+        console.log(action.value)
         return nextState || state
         break;
   

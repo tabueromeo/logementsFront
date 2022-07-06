@@ -4,9 +4,14 @@ import { Card, Icon, Image, Label, Button } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
-const Logement = ({ value, favoris }) => {
+const Logement = ({ value, favoris, dispatch }) => {
   const like = () => {
     console.log(favoris)
+    const action = {
+      type: "FAVORI",
+      value: value.id 
+    }
+    dispatch(action)
   }
 
   return(
