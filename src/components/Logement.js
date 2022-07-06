@@ -1,12 +1,19 @@
-
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
 
-const Logement = () => (
-  <Card>
+import { Card, Icon, Image, Label, Button } from 'semantic-ui-react'
+
+import { connect } from 'react-redux'
+
+const Logement = ({ value, favoris }) => {
+  const like = () => {
+    console.log(favoris)
+  }
+
+  return(
+    <Card>
     <Image src='/maison.png' wrapped ui={false} />
     <Card.Content>
-      <Card.Header>Appartement moderne</Card.Header>
+      <Card.Header>{value.nom}</Card.Header>
       <Card.Meta>
         <span className='date'>Publié hier</span>
       </Card.Meta>
@@ -15,13 +22,23 @@ const Logement = () => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
-        <Icon name='user' />
-       Empire IMMO
-      </a>
+      <Button as='div' labelPosition='right' onClick={like}>
+        <Button icon>
+          <Icon name='heart' />
+          Like
+        </Button>
+        <Label as='a' basic pointing='left'>
+          2,048
+        </Label>
+      </Button>
     </Card.Content>
   </Card>
-)
+  ) 
 
+}
 
-export default Logement
+const mapStateToProps = (state) => {
+  return {favoris: state.favoris}
+}
+
+export default connect(mapStateToProps)(Logement)

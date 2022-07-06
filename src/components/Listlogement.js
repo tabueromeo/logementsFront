@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import  "react-router-dom";
+import Logement from "./Logement";
 
 
 class Listlogement extends React.Component {
@@ -7,29 +8,35 @@ class Listlogement extends React.Component {
       super(props);
 
       this.state = {
-        logement1: {
-            Nom:'logement1',
-            type:'studio',
-            id:1
-        },
-        logement2:{
-            Nom:'logement2',
-            type:'appartement',
-            id:2   
-        },
-        logement3:{
-            Nom:'logement3',
-            type:'villa',
-            id:3,    
+            logements:[ 
+                {
+                    nom:'logement1',
+                    type:'studio',
+                    id:1
+                },
+                {
+                    nom:'logement2',
+                    type:'appartement',
+                    id:2   
+                },
+                {
+                    nom:'logement3',
+                    type:'villa',
+                    id:3,    
+                }
+            ]
         }
-      };
     }
 
     render() {
         return (
             
             <div>
-
+                {
+                    this.state.logements.map((el, index) => (
+                        <Logement value={el} key={index} />
+                    ))
+                }
             </div>
 
         )

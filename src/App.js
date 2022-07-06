@@ -5,6 +5,7 @@ import {
   Route,
   BrowserRouter
 } from "react-router-dom";
+import Listlogement from './components/Listlogement';
 
 import Logement from './components/Logement';
 import Login from './components/Login';
@@ -13,7 +14,7 @@ import SignUp from './components/SignUp';
 const App = () => (
   <BrowserRouter>
     <Routes>
-        <Route path="/" element={<Logement />} />                  
+        <Route path="/" element={<Listlogement />} />                  
         <Route path="/login" element={<Login />} />                  
         <Route path="/signup" element={<SignUp />} />                  
     </Routes>
