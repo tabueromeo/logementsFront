@@ -1,17 +1,21 @@
 import React from 'react'
 
 import { Card, Icon, Image, Label, Button } from 'semantic-ui-react'
+import {useDispatch} from 'react-redux'
+import {getIdLogement} from '../Features/Logements.slice'
 
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
-const Logement = ({ value, favoris, dispatch }) => {
+const Logement = ({ value  }) => {
+  const dispatch=useDispatch()=
   const like = () => {
-    console.log(favoris)
-    const action = {
-      type: "FAVORI",
-      value: value.id 
-    }
-    dispatch(action)
+    console.log('click')
+    dispatch(getIdLogement( value.id ))
+    // const action = {
+    //   type: "FAVORI",
+    //   value: value.id 
+    // }
+    // dispatch(action)
   }
 
   return(
@@ -23,7 +27,7 @@ const Logement = ({ value, favoris, dispatch }) => {
         <span className='date'>Publié hier</span>
       </Card.Meta>
       <Card.Description>
-        Appartement disponible à Yaoundé Tsinga.
+      {value.type} disponible à Yaoundé Tsinga.
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
@@ -42,8 +46,9 @@ const Logement = ({ value, favoris, dispatch }) => {
 
 }
 
-const mapStateToProps = (state) => {
-  return {favoris: state.favoris}
-}
+// const mapStateToProps = (state) => {
+//   return {favoris: state.favoris}
+// }
 
-export default connect(mapStateToProps)(Logement)
+// export default connect(mapStateToProps)(Logement)
+export default Logement

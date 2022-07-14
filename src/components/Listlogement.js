@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import  "react-router-dom";
+import  { useEffect, useState } from "react";
 import Logement from "./Logement";
+import {useDispatch} from 'react-redux'
+import {setlogementsData} from '../Features/Logements.slice'
 
 
-class Listlogement extends React.Component {
-    constructor(props) {
-      super(props);
+const Listlogement = () => { 
 
-      this.state = {
-            logements:[ 
+      
+        const data=[ 
                 {
                     nom:'logement1',
                     type:'studio',
@@ -25,22 +24,31 @@ class Listlogement extends React.Component {
                     id:3,    
                 }
             ]
-        }
-    }
 
-    render() {
+        const [logements, setLogements] = useState({})
+     
+        const dispatch = useDispatch()
+    useEffect(() => {
+        setLogements(data)
+        dispatch(setlogementsData(data))
+
+    }, [dispatch])
+
+    
+    
+
         return (
             
             <div>
                 {
-                    this.state.logements.map((el, index) => (
+                    data.map((el, index) => (
                         <Logement value={el} key={index} />
                     ))
                 }
             </div>
 
         )
-    }
+    
 
 }
 export default Listlogement
